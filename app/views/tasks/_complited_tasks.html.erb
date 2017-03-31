@@ -2,9 +2,9 @@
 <% if @tasks_ended.empty? %>
   <span class="text-warning">There are no tasks!</span>
 <% else @tasks_ended %>
-  <ul class="tasks-list">
+ 
       <% @tasks_ended.each do |task| %>
-
+    <ul class="tasks-list">
 
           <li><div class="col-md-3"><h4>Finish to: <%= task.due_date %></h4></div></li>
         
@@ -34,7 +34,8 @@
  <% end %> 
  </div>
        </li> 
+       </ul>
       <% end %>
-    </ul>
+    
  
 <% end %>

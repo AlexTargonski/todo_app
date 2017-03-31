@@ -1,8 +1,9 @@
 <% if @tasks.empty? %>
   <span class="text-warning">There are no tasks!</span>
 <% else @tasks %>
-  <ul class="tasks-list">
+  
       <% @tasks.each do |task| %>
+      <ul class="tasks-list">
 
 
           <li><div class="col-md-3"><h4>Finish to: <%= task.due_date %></h4></div></li>
@@ -18,9 +19,11 @@
          
            <li> <div class="col-md-2">
           
-             <%= link_to task_path(task), remote: true,method: :delete do %>
-              <i class="fa fa-times fa-2x" aria-hidden="true""></i>
-              <% end %>
+             <%= link_to task_path(task), method: :delete, data: {confirm: 'Are you sure?'}, :remote => true, :class => 'delete_task' do %>
+
+ 
+              <i class="fa fa-times fa-2x" aria-hidden="true"></i>
+             <% end %>
            <%= link_to "", edit_task_path(task), :class => 'fa fa-cog fa-2x', :title => 'view task' %>
             
             <%= link_to "", task_path(task), :class => 'fa fa-file-text-o fa-2x', :title => 'edit' %>
@@ -33,7 +36,9 @@
  <% end %> 
  </div>
        </li> 
+       </ul>
       <% end %>
-    </ul>
+      
+    
  
 <% end %>

@@ -33,6 +33,12 @@ class TasksController < ApplicationController
 	  @task = Task.find(params[:id])
 	  @task.destroy
 	  @tasks = Task.all
+   respond_to do |format|
+      format.html { redirect_to tasks_path }
+      format.json { head :no_content }
+      format.js   { render :layout => false }
+   end
+
 	end
 
 	def edit
