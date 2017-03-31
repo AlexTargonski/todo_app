@@ -19,7 +19,7 @@
          
            <li> <div class="col-md-2">
           
-             <%= link_to task_path(task), remote: true,method: :delete do %>
+             <%= link_to task_path(task), method: :delete, data: {confirm: 'Are you sure?'}, :remote => true, :class => 'delete_task' do %>
               <i class="fa fa-times fa-2x" aria-hidden="true""></i>
               <% end %>
            <%= link_to "", edit_task_path(task), :class => 'fa fa-cog fa-2x', :title => 'view task' %>
