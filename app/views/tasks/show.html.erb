@@ -1,0 +1,30 @@
+
+<% provide(:title, @task.title) %>
+
+<div class="container">
+    <h1><%= @task.title %></h1>
+    <div class="well">
+      <h3>Description:</h3>
+      <p><%= @task.description %></p>
+
+      <h4> Make to <%= @task.due_date %> </h4> 
+      <% if @task.priority == 1 %>
+           <div class="alert alert-success"> <h4 class="center">I will definitely do it</h4></div>
+      <% elsif @task.priority == 2 %>
+
+          <div class="alert alert-info"><h4 class="center">I will do it</h4></div>
+       <% else %>
+
+             <div class="alert alert-warning"><h4 class="center">maybe I will do it</h4></div>
+       <% end %>
+      <% if @task.complited == false %>
+          <div class="alert alert-danger">
+            <h4 class="center">this task is not completed</h4>
+          </div>
+      <% else %>
+             <div class="alert alert-success">
+            <h4 class="center">this task is successfully completed</h4>
+          </div>
+      <% end %>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+<% provide(:title, 'all tasks') %>
+<% if @tasks.empty? %>
+  <span class="text-warning">There are no tasks!</span>
+<% else %>
+  <table class="table table-hover ">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Created at</th>
+        <th>Completed</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tasks.each do |task| %>
+        <tr>
+          <td>
+            <strong>
+              <%= task.title %>
+            </strong>
+          </td>
+
+        
+          <td class="text-info">
+            <%= task.created_at %>
+          </td>
+          <td class="text-success">
+            <%= task.due_date %>
+          </td>
+          <td>
+             <%= link_to task_path(task), remote: true,method: :delete do %>
+              <i class="fa fa-times fa-2x" aria-hidden="true""></i>
+              <% end %>
+           <%= link_to "", edit_task_path(task), :class => 'fa fa-cog fa-2x', :title => 'view task' %>
+            
+            <%= link_to "", task_path(task), :class => 'fa fa-file-text-o fa-2x', :title => 'edit' %>
+    <% unless task.complited? %>          
+  <%= link_to "", complete_task_path(task), :class => 'fa fa-check-square-o fa-2x', :title => 'complete'%>
+<% else  %> 
+  <%= link_to "", active_again_task_path(task), :class => 'fa fa-repeat fa-2x', :title => 'make active again' %>
+ <% end %> 
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+
+
