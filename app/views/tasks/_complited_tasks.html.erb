@@ -1,35 +1,24 @@
 
-
-   
 <% if @tasks_ended.empty? %>
-  <span class="text-warning">There are no complited tasks!</span>
-<% elsif @tasks_ended %>
-  <table class="table table-hover ">
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Created at</th>
-        <th>Completed</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
+  <span class="text-warning">There are no tasks!</span>
+<% else @tasks_ended %>
+  <ul class="tasks-list">
       <% @tasks_ended.each do |task| %>
-        <tr>
-          <td>
-            <strong>
-              <%= task.title %>
-            </strong>
-          </td>
+
+
+          <li><div class="col-md-3"><h4>Finish to: <%= task.due_date %></h4></div></li>
+        
+          <li><div class="col-md-3"><h4><b><%= task.title %></b></h4></div></li>
+           
 
         
-          <td class="text-info">
-            <%= task.created_at %>
-          </td>
-          <td class="text-success">
-            <%= task.due_date %>
-          </td>
-          <td>
+          
+           <li><div class="col-md-4"><h4>Created(<%= task.created_at %>)</h4></div></li>
+         
+          
+         
+           <li> <div class="col-md-2">
+          
              <%= link_to task_path(task), remote: true,method: :delete do %>
               <i class="fa fa-times fa-2x" aria-hidden="true""></i>
               <% end %>
@@ -43,11 +32,9 @@
 
 
  <% end %> 
-          </td>
-        </tr>
+ </div>
+       </li> 
       <% end %>
-    </tbody>
-  </table>
+    </ul>
+ 
 <% end %>
-</div>
-</div>

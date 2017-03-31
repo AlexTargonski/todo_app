@@ -19,10 +19,14 @@ h1 {
   margin-bottom: 30px;
   text-align: center;
 }
-table a{
+ul li a{
+  
   text-decoration: none !important
+  
 }
-
+li{
+  list-style: none;
+}
 
 h2 {
   font-size: 17px;
