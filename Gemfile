@@ -35,13 +35,8 @@ group :development do
   gem 'spring-watcher-listen', '2.0.0'
 end
 
-group :test do
-  gem 'rails-controller-testing', '0.1.1'
-  gem 'guard',                    '2.13.0'
-  gem 'rspec-rails', '2.13.1'
-  gem 'factory_girl'
-  gem 'test-unit'
- 
+group :development, :test do
+  gem 'rspec-rails', '~> 3.5'
 end
 
 group :production do
