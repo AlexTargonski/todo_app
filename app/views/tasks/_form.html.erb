@@ -17,7 +17,7 @@
          <%= f.number_field :priority, class: 'form-control', :min => '1', :max => '3'%>
  
                <div class='input-group date' id='datetimepicker1'>
-                     <%= f.date_field :due_date, :required =>true, :value => Date.today, :min => Date.today, class: 'form-control'%>
+                     <%= f.text_field :due_date, :required =>true, :value => Date.today, :min => Date.today, class: 'form-control'%>
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
