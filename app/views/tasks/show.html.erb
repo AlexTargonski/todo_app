@@ -10,7 +10,7 @@
     
       <h3>Description:</h3>
       <p><%= @task.description %></p>
-
+      <h4>Created(<%= @task.created_at %>)</h4>
       <h4> Make to <%= @task.due_date %> </h4> 
       <% if @task.priority == 1 %>
            <div class="alert alert-success"> <h4 class="center">I will definitely do it</h4></div>

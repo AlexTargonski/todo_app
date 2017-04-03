@@ -5,21 +5,21 @@
       <% @tasks.each do |task| %>
       <ul class="tasks-list">
 
-          <li> <div class="col-md-1"><%= check_box_tag 'tasks[]', task.id, false, class: 'batch-del' %></div></li>
-          <li><div class="col-md-2"><h4>Finish to: <%= task.due_date %></h4></div></li>
+          
+          <li><div class="col-md-3"><h4>Finish to: <%= task.due_date %></h4></div></li>
         
           <li><div class="col-md-3"><h4><b><%= task.title %></b></h4></div></li>
            
 
-        
+        <% @p=task.priority %>
           
-           <li><div class="col-md-4"><h4>Created(<%= task.created_at %>)</h4></div></li>
+           <li><div class="col-md-4"><h4><% @p.times do %><i class="fa fa-star" aria-hidden="true"></i><% end %></h4></div></li>
          
           
          
            <li> <div class="col-md-2">
           
-             <%= link_to task_path(task), method: :delete, data: {confirm: 'Are you sure?'}, :remote => true, :class => 'delete_task' do %>
+          <%= link_to task_path(task), method: :delete, data: {confirm: 'Are you sure?'}, :remote => true, :class => 'delete_task' do %>
 
  
               <i class="fa fa-times fa-2x" aria-hidden="true"></i>

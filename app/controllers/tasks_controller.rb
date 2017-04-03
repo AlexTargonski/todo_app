@@ -13,8 +13,8 @@ class TasksController < ApplicationController
 
     def index
 
-    	@tasks = current_user.tasks.where(complited: false) 
-      @tasks_ended = current_user.tasks.where(complited: true) 
+    	 @tasks = current_user.tasks.order(sort_by_priority).where(complited: false) 
+         @tasks_ended = current_user.tasks.order(sort_by_priority).where(complited: true) 
     end
 
     def create
@@ -71,6 +71,9 @@ end
     redirect_to @task
      
   end
+   def sort_by_priority
+    params[:sort] ||= "priority"
+end
 
 
 
