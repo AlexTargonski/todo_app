@@ -4,12 +4,12 @@
 
 <ul class="tasks-list">
    <li>
-      <div class="col-md-4">
+      <div class="col-md-3">
          <h4><%=sortable "due_date"%></h4>
       </div>
    </li>
    <li>
-      <div class="col-md-3">
+      <div class="col-md-4">
          <h4><%=sortable "title"%></h4>
       </div>
    </li>
@@ -22,12 +22,12 @@
 <% @tasks.each do |task| %>
 <ul class="tasks-list">
    <li>
-      <div class="col-md-4">
+      <div class="col-md-3">
          <h4>Finish to: <%= task.due_date %></h4>
       </div>
    </li>
    <li>
-      <div class="col-md-3">
+      <div class="col-md-4">
          <h4><b><%= link_to task.title, task_path(task) %></b></h4>
       </div>
    </li>
