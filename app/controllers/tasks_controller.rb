@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-
+helper_method :sort_column, :sort_direction
 	def new
 		@task = Task.new
 	end
@@ -13,8 +13,8 @@ class TasksController < ApplicationController
 
     def index
 
-    	 @tasks = current_user.tasks.order(sort_by_priority).where(complited: false) 
-         @tasks_ended = current_user.tasks.order(sort_by_priority).where(complited: true) 
+    	 @tasks = current_user.tasks.order(sort_column + ' ' + sort_direction).where(complited: false) 
+       @tasks_ended = current_user.tasks.order(sort_column + ' ' + sort_direction).where(complited: true) 
     end
 
     def create
@@ -74,7 +74,15 @@ end
    def sort_by_priority
     params[:sort] ||= "priority"
 end
+private
+def sort_column
+  Task.column_names.include?(params[:sort]) ? params[:sort] : "title"
+  
+end
 
+def sort_direction
+  %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
+end
 
 
    private
