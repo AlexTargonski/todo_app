@@ -4,7 +4,7 @@
 
 <ul class="tasks-list">
    <li>
-      <div class="col-md-3">
+      <div class="col-md-4">
          <h4><%=sortable "due_date"%></h4>
       </div>
    </li>
@@ -14,7 +14,7 @@
       </div>
    </li>
    <li>
-      <div class="col-md-4">
+      <div class="col-md-3">
          <h4><%= sortable "priority" %></h4>
       </div>
    </li>
@@ -22,7 +22,7 @@
 <% @tasks.each do |task| %>
 <ul class="tasks-list">
    <li>
-      <div class="col-md-3">
+      <div class="col-md-4">
          <h4>Finish to: <%= task.due_date %></h4>
       </div>
    </li>
@@ -33,7 +33,7 @@
    </li>
    <% @star=task.priority %>
    <li>
-      <div class="col-md-4">
+      <div class="col-md-3">
          <h4><% @star.times do %><i class="fa fa-star" aria-hidden="true"></i><% end %></h4>
       </div>
    </li>
