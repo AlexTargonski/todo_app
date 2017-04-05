@@ -1,6 +1,6 @@
 module ApplicationHelper
 
-  # Returns the full title on a per-page basis.
+# Returns the full title on a per-page basis.
   def full_title(page_title = '')
     base_title = "Todo list"
     if page_title.empty?
@@ -10,7 +10,6 @@ module ApplicationHelper
     end
   end
 end
-
 
 module ApplicationHelper
   def sortable(column, title = nil)

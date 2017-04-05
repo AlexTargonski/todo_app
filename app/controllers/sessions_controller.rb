@@ -5,12 +5,13 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(email: params[:session][:email].downcase)
+    
     if user && user.authenticate(params[:session][:password])
       if user.email_confirmed
            log_in user
          redirect_to root_url
       else
-        flash.now[:error] = 'Please activate your account by following the 
+        flash.now[:danger] = 'Please activate your account by following the 
         instructions in the account confirmation email you received to proceed'
         render 'new'
       end

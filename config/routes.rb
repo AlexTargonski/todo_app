@@ -1,28 +1,23 @@
 Rails.application.routes.draw do
 
+  root 'pages#home'
 
- root 'pages#home'
-
-   get  '/about',   to: 'pages#about'
-   get  '/signup',  to: 'users#new'
-   post '/signup',  to: 'users#create'
-   get    '/login',   to: 'sessions#new'
-   post   '/login',   to: 'sessions#create'
-   delete '/logout',  to: 'sessions#destroy'
-   get    '/tasks',   to:  'tasks#index'
-   post   '/tasks',   to:  'tasks#create'
-   delete  '/tasks',   to:  'tasks#destroy'
+  get    '/about',   to: 'pages#about'
+  get    '/signup',  to: 'users#new'
+  post   '/signup',  to: 'users#create'
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
+  delete '/logout',  to: 'sessions#destroy'
+  get    '/tasks',   to:  'tasks#index'
+  post   '/tasks',   to:  'tasks#create'
+  delete '/tasks',   to:  'tasks#destroy'
   
-
- 
-
-   resources :tasks do
-
+  resources :tasks do
     member do
       get 'complete'
       get 'active_again'
-end
-end
+    end
+  end
 
   resources :users do
     member do

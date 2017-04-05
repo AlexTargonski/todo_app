@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails',                   '5.0.1'
 gem 'bootstrap-sass',          '3.3.6'
 gem 'font-awesome-rails'
-gem 'momentjs-rails', '>= 2.9.0'
+gem 'momentjs-rails',          '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 gem 'bcrypt',                  '3.1.11'
 gem 'bcrypt',                  '3.1.11'
@@ -22,10 +22,10 @@ gem 'jquery-rails',            '4.1.1'
 gem 'turbolinks',              '5.0.1'
 gem 'jbuilder',                '2.4.1'
 gem 'rake', '<11'
+
 group :development, :test do
   gem 'sqlite3', '1.3.12'
   gem 'byebug',  '9.0.0', platform: :mri
-  
 end
 
 group :development do
@@ -41,9 +41,6 @@ end
 
 group :production do
   gem 'pg',   '0.18.4'
-
-
-
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

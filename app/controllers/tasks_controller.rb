@@ -1,94 +1,94 @@
 class TasksController < ApplicationController
-helper_method :sort_column, :sort_direction
+  helper_method :sort_column, :sort_direction
+
 	def new
-		@task = Task.new
-	end
+    @task = Task.new
+  end
 
 	def show
-	if @task = current_user.tasks
-	 @task = Task.find(params[:id])
-     end
-    end
+	 @task = current_user.tasks.find params[:id] 
+  end
 
 
-    def index
+  def index
+    @tasks = current_user.tasks.order(sort_column + ' ' + sort_direction).where(complited: false) 
 
-    	 @tasks = current_user.tasks.order(sort_column + ' ' + sort_direction).where(complited: false) 
-       @tasks_ended = current_user.tasks.order(sort_column + ' ' + sort_direction).where(complited: true) 
-    end
+    @tasks_ended = current_user.tasks.order(sort_column + ' ' + sort_direction).where(complited: true) 
+  end
 
-    def create
-      @task = Task.create(task_params)
+  def create
+    @task = Task.create(task_params)
+
     if  
       @task.save
       redirect_to tasks_path
     else
-      
       render "new"
     end 
-    end
+  end
 
 
-    def destroy
-	  @task = Task.find(params[:id])
+  def destroy
+    @task = Task.find(params[:id])
+
 	  @task.destroy
+
 	  @tasks = Task.all
-   respond_to do |format|
+
+    respond_to do |format|
       format.html { redirect_to tasks_path }
       format.json { head :no_content }
       format.js   { render :layout => false }
-   end
-
-	end
+    end
+  end
 
 	def edit
-	  @task = Task.find(params[:id])
-	end
+    @task = current_user.tasks.find params[:id]
+  end
 
-	 def update
 	 
-    @task = Task.find(params[:id])
+  def update
+	 @task = Task.find(params[:id])
     if @task.update_attributes(task_params)
       redirect_to @task
     else
       render 'edit'
-    
-end
+    end
   end
 
   def complete
-
     @task = Task.find(params[:id])
     @task.update_attributes(complited: true) 
     redirect_to tasks_path
-     
   end
 
   def active_again
-
     @task = Task.find(params[:id])
     @task.update_attributes(complited: false) 
     redirect_to tasks_path
-     
   end
-   def sort_by_priority
+
+
+  def sort_by_priority
     params[:sort] ||= "priority"
-end
-private
-def sort_column
-  Task.column_names.include?(params[:sort]) ? params[:sort] : "title"
-  
-end
-
-def sort_direction
-  %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
-end
+  end
 
 
-   private
-      def task_params
-        params.require(:task).permit(:user_id, :title, :description, :priority, :complited, :due_date)
-	  end
+  private
 
+  def sort_column
+    Task.column_names.include?(params[:sort]) ? params[:sort] : "title"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
+  end
+
+
+  private
+
+  def task_params
+    params.require(:task).permit(:user_id, :title, :description, :priority, :complited, :due_date)
+  end
 
 end

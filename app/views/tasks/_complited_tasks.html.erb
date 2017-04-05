@@ -1,49 +1,55 @@
-
 <% if @tasks_ended.empty? %>
-  <span class="text-warning">There are no tasks!</span>
+<span class="text-warning">There are no tasks!</span>
 <% else @tasks_ended %>
- <ul class="tasks-list">
-    <li><div class="col-md-3"><h4><%=sortable "due_date"%></h4></div></li>
-    <li><div class="col-md-4"><h4><%=sortable "title"%></h4></div></li>
-    <li><div class="col-md-3"><h4><%= sortable "priority" %></h4></div></li>
-  </ul>
- 
-      <% @tasks_ended.each do |task| %>
-    <ul class="tasks-list">
-
-          
-          <li><div class="col-md-3"><h4>Finish to: <%= task.due_date %></h4></div></li>
-        
-          <li><div class="col-md-4"><h4><b><%= link_to task.title, task_path(task) %></b></h4></div></li>
-           
-
-        <% @star=task.priority %>
-          
-           <li><div class="col-md-3"><h4><% @star.times do %><i class="fa fa-star" aria-hidden="true"></i><% end %></h4></div></li>
-         
-          
-         
-           <li> <div class="col-md-2">
-          
-          <%= link_to task_path(task), method: :delete, data: {confirm: 'Are you sure?'}, :remote => true, :class => 'delete_task' do %>
-
- 
-              <i class="fa fa-times fa-2x" aria-hidden="true"></i>
-             <% end %>
-           <%= link_to "", edit_task_path(task), :class => 'fa fa-cog fa-2x', :title => 'edit' %>
-            
-            <%= link_to "", task_path(task), :class => 'fa fa-file-text-o fa-2x', :title => 'view task' %>
-    <% unless task.complited? %>          
-  <%= link_to "", complete_task_path(task), :class => 'fa fa-check-square-o fa-2x', :title => 'complete'%>
-<% else  %> 
-  <%= link_to "", active_again_task_path(task), :class => 'fa fa-repeat fa-2x', :title => 'make active again' %>
-
- <% end %> 
- </div>
-       </li> 
-       </ul>
-
+<ul class="tasks-list">
+  <li>
+    <div class="col-md-3">
+      <h4><%=sortable "due_date"%></h4>
+    </div>
+  </li>
+  <li>
+    <div class="col-md-4">
+      <h4><%=sortable "title"%></h4>
+    </div>
+  </li>
+  <li>
+    <div class="col-md-3">
+      <h4><%= sortable "priority" %></h4>
+    </div>
+  </li>
+</ul>
+<% @tasks_ended.each do |task| %>
+<ul class="tasks-list">
+  <li>
+    <div class="col-md-3">
+      <h4>Finish to: <%= task.due_date %></h4>
+    </div>
+  </li>
+  <li>
+    <div class="col-md-4">
+      <h4><b><%= link_to task.title, task_path(task) %></b></h4>
+    </div>
+  </li>
+  <% @star=task.priority %>
+  <li>
+    <div class="col-md-3">
+      <h4><% @star.times do %><i class="fa fa-star" aria-hidden="true"></i><% end %></h4>
+    </div>
+  </li>
+  <li>
+    <div class="col-md-2">
+      <%= link_to task_path(task), method: :delete, data: {confirm: 'Are you sure?'}, :remote => true, :class => 'delete_task' do %>
+      <i class="fa fa-times fa-2x" aria-hidden="true"></i>
       <% end %>
-    
- 
+      <%= link_to "", edit_task_path(task), :class => 'fa fa-cog fa-2x', :title => 'edit' %>
+      <%= link_to "", task_path(task), :class => 'fa fa-file-text-o fa-2x', :title => 'view task' %>
+      <% unless task.complited? %>          
+      <%= link_to "", complete_task_path(task), :class => 'fa fa-check-square-o fa-2x', :title => 'complete'%>
+      <% else  %> 
+      <%= link_to "", active_again_task_path(task), :class => 'fa fa-repeat fa-2x', :title => 'make active again' %>
+      <% end %> 
+    </div>
+  </li>
+</ul>
+<% end %>
 <% end %>
