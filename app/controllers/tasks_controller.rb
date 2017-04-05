@@ -60,7 +60,7 @@ end
 
     @task = Task.find(params[:id])
     @task.update_attributes(complited: true) 
-    redirect_to @task
+    redirect_to tasks_path
      
   end
 
@@ -68,7 +68,7 @@ end
 
     @task = Task.find(params[:id])
     @task.update_attributes(complited: false) 
-    redirect_to @task
+    redirect_to tasks_path
      
   end
    def sort_by_priority

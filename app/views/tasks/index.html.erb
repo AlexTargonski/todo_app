@@ -1,17 +1,20 @@
 <% provide(:title, 'all tasks') %>
+
 <div class = "panel panel-danger">
 	<div class = "panel-heading">
 		<h1>Not complited tasks:</h1>
 	</div>
-	<div class = "panel-body">
+	<div class = "panel-body" id="incomplete_tasks">
 		<%= render 'not_complited' %> 
 
 	 </div>
 
  </div>
+
 	 
 <div class = "panel panel-success">
-	<div class = "panel-heading">
+
+	<div class = "panel-heading" id="complete_tasks">
 		<h1>Complited tasks:</h1>
 	</div>
 	 	<div class = "panel-body">

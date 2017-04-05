@@ -3,7 +3,7 @@
 <% else @tasks %>
 
 <ul class="tasks-list">
-   <li>
+
       <div class="col-md-3">
          <h4><%=sortable "due_date"%></h4>
       </div>
@@ -45,13 +45,14 @@
          <%= link_to "", edit_task_path(task), :class => 'fa fa-cog fa-2x', :title => 'edit' %>
          <%= link_to "", task_path(task), :class => 'fa fa-file-text-o fa-2x', :title => 'view task' %>
          <% unless task.complited? %>          
-         <%= link_to "", complete_task_path(task), :class => 'fa fa-check-square-o fa-2x', :title => 'complete'%>
+         <%= link_to "", complete_task_path(task), :class => 'fa fa-check-square-o fa-2x ', :title => 'complete'%>
          <% else  %> 
          <%= link_to "", active_again_task_path(task), :class => 'fa fa-repeat fa-2x', :title => 'make active again' %>
          <% end %> 
       </div>
    </li>
 </ul>
+
 
 <% end %>
 
