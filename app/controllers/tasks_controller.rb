@@ -5,9 +5,9 @@ helper_method :sort_column, :sort_direction
 	end
 
 	def show
-	
+	if @task = current_user.tasks
 	 @task = Task.find(params[:id])
-     
+     end
     end
 
 
@@ -18,7 +18,7 @@ helper_method :sort_column, :sort_direction
     end
 
     def create
-      @task = Task.new(task_params)
+      @task = Task.create(task_params)
     if  
       @task.save
       redirect_to tasks_path
