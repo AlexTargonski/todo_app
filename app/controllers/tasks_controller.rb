@@ -13,7 +13,7 @@ class TasksController < ApplicationController
   def index
     @tasks = current_user.tasks.order(sort_column + ' ' + sort_direction).where(complited: false) 
 
-    @tasks_ended = current_user.tasks.order(sort_column + ' ' + sort_direction).where(complited: true) 
+    @tasks_complited = current_user.tasks.order(sort_column + ' ' + sort_direction).where(complited: true) 
   end
 
   def create

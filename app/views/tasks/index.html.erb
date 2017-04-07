@@ -27,11 +27,11 @@
    </div>
    <div class = "panel-body">
       <ul>
-         <% if @tasks_ended.empty? %>
+         <% if @tasks_complited.empty? %>
          <span class="text-warning">There are no tasks!</span>
-         <% else @tasks_ended %>
+         <% else @tasks_complited %>
          <%= render 'sort_head' %>
-         <% @tasks_ended.each do |task| %>
+         <% @tasks_complited.each do |task| %>
          <%= render partial: 'task', object: task %> 
          <% end %>
          <% end %>
