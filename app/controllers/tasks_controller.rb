@@ -66,10 +66,6 @@ class TasksController < ApplicationController
     redirect_to tasks_path
   end
 
-  def sort_by_priority
-    params[:sort] ||= "priority"
-  end
-
   def destroy_multiple 
     @tasks = current_user.tasks.where(id: params[:tasks]).destroy_all 
     redirect_to tasks_path
