@@ -1,24 +1,42 @@
 <% provide(:title, 'all tasks') %>
-
+<%= form_tag destroy_multiple_tasks_path do %>
 <div class = "panel panel-danger">
-	<div class = "panel-heading">
-		<h1> Not complited tasks:</h1>
-	</div>
-	<div class = "panel-body" id="incomplete_tasks">
-		<%= render 'not_complited' %> 
-	</div>
-
- </div>
- <%= link_to '+ add task', new_task_path,  class:  'btn btn-success' %>
-
-	 
-<div class = "panel panel-success">
-
-	<div class = "panel-heading" id="complete_tasks">
-		<h1>Complited tasks:</h1>
-	</div>
-	 	<div class = "panel-body">
-			<%= render 'complited_tasks' %> 
-		</div>
+   <div class = "panel-heading">
+      <h1> Not complited tasks:</h1>
+   </div>
+   <div class = "panel-body" id="incomplete_tasks">
+      <ul>
+         <% if @tasks.empty? %>
+         <span class="text-warning">There are no tasks! But you can <%= link_to 'create new', new_task_path %></span>
+         <% else @tasks %>
+      	<%= render 'sort_head' %> 
+         <% @tasks.each do |task| %>
+         <%= render partial: 'task', object: task %> 
+         <% end %>
+         <% end %>
+      </ul>
+   </div>
 </div>
-
+<%= render 'btns' %> 
+<% end %>
+<%= link_to '+ add task', new_task_path,  class:  'btn btn-success' %>
+<%= form_tag destroy_multiple_tasks_path do %>
+<div class = "panel panel-success">
+   <div class = "panel-heading" id="complete_tasks">
+      <h1>Complited tasks:</h1>
+   </div>
+   <div class = "panel-body">
+      <ul>
+         <% if @tasks_ended.empty? %>
+         <span class="text-warning">There are no tasks!</span>
+         <% else @tasks_ended %>
+         <%= render 'sort_head' %>
+         <% @tasks_ended.each do |task| %>
+         <%= render partial: 'task', object: task %> 
+         <% end %>
+         <% end %>
+      </ul>
+   </div>
+</div>
+<%= render 'btns' %> 
+<% end %>

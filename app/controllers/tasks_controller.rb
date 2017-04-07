@@ -27,7 +27,6 @@ class TasksController < ApplicationController
     end 
   end
 
-
   def destroy
     @task = Task.find(params[:id])
 
@@ -46,8 +45,7 @@ class TasksController < ApplicationController
     @task = current_user.tasks.find params[:id]
   end
 
-	 
-  def update
+	def update
 	 @task = Task.find(params[:id])
     if @task.update_attributes(task_params)
       redirect_to @task
@@ -68,11 +66,14 @@ class TasksController < ApplicationController
     redirect_to tasks_path
   end
 
-
   def sort_by_priority
     params[:sort] ||= "priority"
   end
 
+  def destroy_multiple 
+    @tasks = current_user.tasks.where(id: params[:tasks]).destroy_all 
+    redirect_to tasks_path
+  end
 
   private
 
@@ -83,7 +84,6 @@ class TasksController < ApplicationController
   def sort_direction
     %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
   end
-
 
   private
 

@@ -17,6 +17,10 @@ Rails.application.routes.draw do
       get 'complete'
       get 'active_again'
     end
+    
+    collection do
+      post :destroy_multiple
+    end
   end
 
   resources :users do

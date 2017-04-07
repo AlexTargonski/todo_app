@@ -129,7 +129,9 @@ input {
 
 
 .tasks-list{
-margin-bottom: 50px;
+  padding: 0; 
+  margin-top: 5px; 
+  height: 45px;
 }
 
 .tasks-list b a{
@@ -138,4 +140,12 @@ margin-bottom: 50px;
 
 .panel{
   margin-top: 15px;
+}
+
+.task-bnt-panel{
+  margin-bottom: 15px;
+}
+
+.sort_header{
+  height: 50px;
 }

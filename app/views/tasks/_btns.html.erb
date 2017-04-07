@@ -1,0 +1,12 @@
+
+<div class="task-bnt-panel">
+	<div class="col-md-2">
+		<%= submit_tag "Delete selected", method: :delete, type: "submit", data: { confirm: "Are you sure?" }, class: "btn btn-danger delete_selected", disabled: true %>
+	</div>
+	<div class="col-md-2">
+		<input type="button" class=" icon-check btn btn-primary check_all" value="Check All">
+	</div>
+	<div class="col-md-2">
+		<input type="button" class="btn btn-primary uncheck_all" value="Uncheck All">
+	</div>
+</div>

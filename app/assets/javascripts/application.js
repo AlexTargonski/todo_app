@@ -19,4 +19,45 @@
 //= require moment
 //= require bootstrap-datetimepicker
 
+$(document).on("turbolinks:load", function(){ 
 
+  $(".check_all").click(function(){
+    var form = $(this).parents('form')
+    var check = form.find('input');
+    var button = form.find('.delete_selected');
+    var cboxes = form.find('input:checkbox:checked');
+
+    for (var i = 0; i < check.length; i++) {
+      if (check[i].type == 'checkbox') { 
+        button.removeAttr("disabled");   
+        check[i].checked = true; 
+      }
+    } 
+  }); 
+   
+  $(".uncheck_all").click(function(){
+    var form = $(this).parents('form')
+    var check = form.find('input');
+    var button = form.find('.delete_selected');
+    var cboxes = form.find('input:checkbox:checked');
+
+    for (var i = 0; i < check.length; i++) {
+      if (check[i].type == 'checkbox') { 
+        button.attr( "disabled", "disabled");  
+        check[i].checked = false; 
+      }
+    } 
+  });
+  $('form').on("change", function(){
+    var form = $(this);
+    var button = form.find('.delete_selected');
+    var cboxes = form.find('input:checkbox:checked');
+    if (cboxes.length > 0) {
+      button.removeAttr("disabled");
+    } else {
+      button.attr( "disabled", "disabled");
+    }  
+  });
+
+ 
+}); 
