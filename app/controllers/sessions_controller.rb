@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     
     if user && user.authenticate(params[:session][:password])
       if user.email_confirmed
-           log_in user
+          log_in user
          redirect_to root_url
       else
         flash.now[:danger] = 'Please activate your account by following the 
