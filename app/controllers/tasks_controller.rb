@@ -5,7 +5,7 @@ class TasksController < ApplicationController
     @task = Task.new
   end
 
-def show
+  def show
 	  @task = current_user.tasks.find params[:id] 
   end
 
@@ -37,11 +37,11 @@ def show
     end
   end
 
-def edit
+  def edit
     @task = current_user.tasks.find params[:id]
   end
 
-def update
+  def update
 	  @task = Task.find(params[:id])
 
     if @task.update_attributes(task_params)
