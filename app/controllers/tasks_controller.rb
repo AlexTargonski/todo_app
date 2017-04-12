@@ -9,7 +9,6 @@ class TasksController < ApplicationController
 	  @task = current_user.tasks.find params[:id] 
   end
 
-
   def index
     @tasks = current_user.tasks.order(sort_column + ' ' + sort_direction).where(complited: false) 
     @tasks_complited = current_user.tasks.order(sort_column + ' ' + sort_direction).where(complited: true) 
