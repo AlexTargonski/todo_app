@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  
   helper_method :sort_column, :sort_direction
 
   def new
@@ -6,7 +7,7 @@ class TasksController < ApplicationController
   end
 
   def show
-	  @task = current_user.tasks.find params[:id] 
+    @task = current_user.tasks.find params[:id] 
   end
 
   def index
@@ -42,7 +43,7 @@ class TasksController < ApplicationController
   end
 
   def update
-	  @task = Task.find(params[:id])
+    @task = Task.find(params[:id])
 
     if @task.update_attributes(task_params)
       redirect_to @task
