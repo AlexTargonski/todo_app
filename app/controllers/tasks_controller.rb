@@ -6,13 +6,12 @@ class TasksController < ApplicationController
   end
 
 	def show
-	 @task = current_user.tasks.find params[:id] 
+	  @task = current_user.tasks.find params[:id] 
   end
 
 
   def index
     @tasks = current_user.tasks.order(sort_column + ' ' + sort_direction).where(complited: false) 
-
     @tasks_complited = current_user.tasks.order(sort_column + ' ' + sort_direction).where(complited: true) 
   end
 
@@ -29,10 +28,8 @@ class TasksController < ApplicationController
 
   def destroy
     @task = Task.find(params[:id])
-
-	  @task.destroy
-
-	  @tasks = Task.all
+    @task.destroy
+    @tasks = Task.all
 
     respond_to do |format|
       format.html { redirect_to tasks_path }
@@ -46,7 +43,8 @@ class TasksController < ApplicationController
   end
 
 	def update
-	 @task = Task.find(params[:id])
+	  @task = Task.find(params[:id])
+
     if @task.update_attributes(task_params)
       redirect_to @task
     else
