@@ -2,11 +2,11 @@ class TasksController < ApplicationController
   helper_method :sort_column, :sort_direction
 
 	def new
-  @task = Task.new
+    @task = Task.new
   end
 
 	def show
-	@task = current_user.tasks.find params[:id] 
+	  @task = current_user.tasks.find params[:id] 
   end
 
   def index
