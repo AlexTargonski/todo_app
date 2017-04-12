@@ -1,11 +1,11 @@
 class TasksController < ApplicationController
-
   helper_method :sort_column, :sort_direction
+
   def new
     @task = Task.new
   end
 
-	def show
+def show
 	  @task = current_user.tasks.find params[:id] 
   end
 
@@ -37,11 +37,11 @@ class TasksController < ApplicationController
     end
   end
 
-	def edit
+def edit
     @task = current_user.tasks.find params[:id]
   end
 
-	def update
+def update
 	  @task = Task.find(params[:id])
 
     if @task.update_attributes(task_params)
